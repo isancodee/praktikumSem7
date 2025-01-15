@@ -7,7 +7,7 @@ use App\Models\Product;
 
 //import return type View
 use Illuminate\View\View;
-
+use Barryvdh\DomPDF\Facade\PDF;
 //import return type redirectResponse
 use Illuminate\Http\RedirectResponse;
 //import Http Request
@@ -125,5 +125,19 @@ class ProductController extends Controller
     $product->delete();
     //redirect to index
     return redirect()->route('products.index')->with(['success' => 'Data Berhasil Dihapus!']);
+  }
+
+  public function printPdf()
+  {
+    $products = Product::get();
+    $data = [
+      'title' => 'Welcome To fti.uniska-bjm.ac.id',
+      'date' => date('m/d/Y'),
+      'products' => $products
+    ];
+    $pdf = PDF::loadview('products.productPdf', $data);
+    $pdf->setPaper('A4', 'landscape');
+    return $pdf->stream('Data product.pdf', array("attachment"
+    => false));
   }
 }

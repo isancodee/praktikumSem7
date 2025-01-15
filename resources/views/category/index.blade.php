@@ -10,6 +10,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <a href="{{ route('category.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
+                <a href="{{ route('printCategory') }}" class="btn btn-md btn-warning mb-3">PRINT Pdf</a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -56,5 +57,5 @@
 @endsection
 @section('alertload')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bu
-                                                ndle.min.js"></script>
+                                                    ndle.min.js"></script>
 @endsection

@@ -40,8 +40,8 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Product</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Category</a>
+                        <a class="nav-link" target="_BLANK" href="{{ route('printProduct') }}">Product</a>
+                        <a class="nav-link" target="_BLANK" href="{{ route('printCategory') }}">Category</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Customer</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Supplier</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Transaction</a>

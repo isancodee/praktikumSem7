@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //import return type View
 
 use App\Models\Kategori;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -82,5 +83,19 @@ class KategoriController extends Controller
         $category->delete();
         //redirect to index
         return redirect()->route('category.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function printPdf()
+    {
+        $categorys = Kategori::get();
+        $data = [
+            'title' => 'Welcome To fti.uniska-bjm.ac.id',
+            'date' => date('m/d/Y'),
+            'categorys' => $categorys
+        ];
+        $pdf = PDF::loadview('category.categoryPdf', $data);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('Data category.pdf', array("attachment"
+        => false));
     }
 }
